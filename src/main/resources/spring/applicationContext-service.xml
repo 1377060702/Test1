@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--使用dubbo协议在20881端口发布服务，注意:各个服务使用的端口不能重复-->
+    <dubbo:protocol name="dubbo" port="20883"/>
+    <!--当前应用名-->
+    <dubbo:application name="youlexuan-content-service"/>
+    <!--当前服务发布到哪一个注册中心上，注意：ip改成你自己的ip-->
+    <dubbo:registry address="zookeeper://192.168.188.128:2181"/>
+    <!--在指定包下扫描实现类，允许被远程调用的实现类需要添加dubbo包下的Service注解，否则的话就添加原生Service注解-->
+    <dubbo:annotation package="com.offcn.content.service.impl"/>
+
+</beans>
